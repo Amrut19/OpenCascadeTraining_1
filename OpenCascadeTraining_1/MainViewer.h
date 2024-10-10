@@ -19,6 +19,7 @@ public:
 	void setWindow(HWND hwnd);
 	void displayBoxShape();
 	void displayPoint();
+	void displayLine();
 
 };
 

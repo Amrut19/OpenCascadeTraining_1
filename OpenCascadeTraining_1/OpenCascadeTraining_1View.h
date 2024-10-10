@@ -52,6 +52,7 @@ public:
 	afx_msg void OnDemoBox();
 	afx_msg void OnDemoBox32773();
 	afx_msg void OnDemoPoint();
+	afx_msg void OnDemoLine();
 };
 
 #ifndef _DEBUG  // debug version in OpenCascadeTraining_1View.cpp
