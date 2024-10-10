@@ -1,6 +1,5 @@
 
 // OpenCascadeTraining_1View.cpp : implementation of the COpenCascadeTraining1View class
-//Initial
 
 #include "pch.h"
 #include "framework.h"
@@ -12,7 +11,7 @@
 
 #include "OpenCascadeTraining_1Doc.h"
 #include "OpenCascadeTraining_1View.h"
-
+#include <BRepPrimAPI_MakeSphere.hxx>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -29,6 +28,9 @@ BEGIN_MESSAGE_MAP(COpenCascadeTraining1View, CView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &COpenCascadeTraining1View::OnFilePrintPreview)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
+	
+	ON_COMMAND(ID_DEMO_BOX32773, &COpenCascadeTraining1View::OnDemoBox32773)
+	ON_COMMAND(ID_DEMO_POINT, &COpenCascadeTraining1View::OnDemoPoint)
 END_MESSAGE_MAP()
 
 // COpenCascadeTraining1View construction/destruction
@@ -49,6 +51,17 @@ BOOL COpenCascadeTraining1View::PreCreateWindow(CREATESTRUCT& cs)
 	//  the CREATESTRUCT cs
 
 	return CView::PreCreateWindow(cs);
+}
+
+void COpenCascadeTraining1View::OnInitialUpdate()
+{
+
+	CView::OnInitialUpdate();
+
+	m_pMainFrame->setWindow(GetSafeHwnd());
+
+
+
 }
 
 // COpenCascadeTraining1View drawing
@@ -126,3 +139,29 @@ COpenCascadeTraining1Doc* COpenCascadeTraining1View::GetDocument() const // non-
 
 
 // COpenCascadeTraining1View message handlers
+
+
+void COpenCascadeTraining1View::OnDemoBox()
+{
+	// TODO: Add your command handler code here
+	m_pMainFrame->displayBoxShape();
+}
+
+
+void COpenCascadeTraining1View::OnDemoBox32773()
+{
+	// TODO: Add your command handler code here
+	m_pMainFrame->displayBoxShape();
+}
+
+
+void COpenCascadeTraining1View::OnDemoPoint()
+{
+	// TODO: Add your command handler code here
+	// BRepPrimAPI_MakeSphere (const gp_Pnt &Center, const Standard_Real R)
+	
+
+	m_pMainFrame->displayPoint();
+
+
+}

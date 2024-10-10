@@ -3,10 +3,11 @@
 //
 
 #pragma once
-
+#include"MainViewer.h"
 
 class COpenCascadeTraining1View : public CView
 {
+	MainViewer* m_pMainFrame = new MainViewer();
 protected: // create from serialization only
 	COpenCascadeTraining1View() noexcept;
 	DECLARE_DYNCREATE(COpenCascadeTraining1View)
@@ -22,6 +23,10 @@ public:
 public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+
+	void OnInitialUpdate();
+
+
 protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
 	virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
@@ -43,6 +48,10 @@ protected:
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnDemoBox();
+	afx_msg void OnDemoBox32773();
+	afx_msg void OnDemoPoint();
 };
 
 #ifndef _DEBUG  // debug version in OpenCascadeTraining_1View.cpp
