@@ -1,6 +1,6 @@
 
 // OpenCascadeTraining_1View.cpp : implementation of the COpenCascadeTraining1View class
-//
+//Initial
 
 #include "pch.h"
 #include "framework.h"
