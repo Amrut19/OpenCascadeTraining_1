@@ -51,6 +51,7 @@ protected:
 public:
 	afx_msg void OnDemoBox();
 	afx_msg void OnDemoBox32773();
+	afx_msg void OnDemoPoint();
 };
 
 #ifndef _DEBUG  // debug version in OpenCascadeTraining_1View.cpp

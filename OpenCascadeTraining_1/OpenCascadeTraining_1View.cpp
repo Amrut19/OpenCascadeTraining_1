@@ -11,7 +11,7 @@
 
 #include "OpenCascadeTraining_1Doc.h"
 #include "OpenCascadeTraining_1View.h"
-
+#include <BRepPrimAPI_MakeSphere.hxx>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -30,6 +30,7 @@ BEGIN_MESSAGE_MAP(COpenCascadeTraining1View, CView)
 	ON_WM_RBUTTONUP()
 	
 	ON_COMMAND(ID_DEMO_BOX32773, &COpenCascadeTraining1View::OnDemoBox32773)
+	ON_COMMAND(ID_DEMO_POINT, &COpenCascadeTraining1View::OnDemoPoint)
 END_MESSAGE_MAP()
 
 // COpenCascadeTraining1View construction/destruction
@@ -151,4 +152,16 @@ void COpenCascadeTraining1View::OnDemoBox32773()
 {
 	// TODO: Add your command handler code here
 	m_pMainFrame->displayBoxShape();
+}
+
+
+void COpenCascadeTraining1View::OnDemoPoint()
+{
+	// TODO: Add your command handler code here
+	// BRepPrimAPI_MakeSphere (const gp_Pnt &Center, const Standard_Real R)
+	
+
+	m_pMainFrame->displayPoint();
+
+
 }

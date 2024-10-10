@@ -4,6 +4,7 @@
 #include<TopoDS_Shape.hxx>
 #include<BRepPrimAPI_MakeBox.hxx>
 #include <AIS_Shape.hxx>
+#include <BRepPrimAPI_MakeSphere.hxx>
 MainViewer::MainViewer()
 {
 	
@@ -87,6 +88,33 @@ void MainViewer::displayBoxShape()
 	
 
 	std::cout << "Displaying shape..." << std::endl;
+
+
+}
+
+void MainViewer::displayPoint()
+{
+	gp_Pnt m_center(5, 5, 5);
+	Standard_Real radius(100);
+	TopoDS_Shape m_mkSphere = BRepPrimAPI_MakeSphere(m_center, radius);
+
+	
+
+	if (m_mkSphere.IsNull())
+	{
+		std::cout << "sphere not created";
+	}
+	Handle(AIS_Shape) pt_mkSphere = new AIS_Shape(m_mkSphere);
+
+	m_pAISContext->Display(pt_mkSphere, Standard_True);
+	m_pAISContext->SetDisplayMode(AIS_Shaded, Standard_True);
+
+
+	m_pV3dView->MustBeResized();
+
+	m_pAISContext->UpdateCurrentViewer();
+	std::cout << "Displaying shape..." << std::endl;
+
 
 
 }
