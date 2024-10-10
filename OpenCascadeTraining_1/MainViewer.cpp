@@ -6,6 +6,13 @@
 #include <AIS_Shape.hxx>
 #include <BRepPrimAPI_MakeSphere.hxx>
 #include<BRepPrimAPI_MakeCylinder.hxx>
+#include <Graphic3d_MaterialAspect.hxx>
+#include <Graphic3d_Structure.hxx>
+
+
+
+
+
 MainViewer::MainViewer()
 {
 	
@@ -27,6 +34,7 @@ MainViewer::MainViewer()
 
 	m_pV3d_Viewer->SetDefaultLights();
 	m_pV3d_Viewer->SetLightOn();
+
 	m_pV3dView = m_pV3d_Viewer->CreateView();
 
 
@@ -59,10 +67,10 @@ void MainViewer::setWindow(HWND hwnd)
 	aParams.IsAntialiasingEnabled = Standard_True;
 	aParams.NbMsaaSamples=8;
 
-	/*m_bgColor1 = Quantity_NOC_RED;
+	m_bgColor1 = Quantity_NOC_WHITE;
 	m_bgColor2 = Quantity_NOC_GRAY;
 
-	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);*/
+	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
 
 }
 
@@ -93,10 +101,7 @@ void MainViewer::displayBoxShape()
 
 	std::cout << "Displaying shape..." << std::endl;
 
-	m_bgColor1 = Quantity_NOC_PURPLE;
-	m_bgColor2 = Quantity_NOC_PINK;
-
-	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
+	
 }
 
 void MainViewer::displayPoint()
@@ -123,10 +128,7 @@ void MainViewer::displayPoint()
 	m_pAISContext->UpdateCurrentViewer();
 	std::cout << "Displaying shape..." << std::endl;
 
-	m_bgColor1 = Quantity_NOC_BLACK;
-	m_bgColor2 = Quantity_NOC_SKYBLUE;
 
-	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
 
 }
 
@@ -144,17 +146,24 @@ void MainViewer::displayLine()
 
 	Handle(AIS_Shape) t1 =  new	AIS_Shape(mk_cyclinder);
 
+
+	
+
+
+
 	m_pAISContext->Display(t1, Standard_True); 
 
 	m_pAISContext->SetDisplayMode(AIS_Shaded, Standard_True);
 
+	
 
 	m_pV3dView->MustBeResized();
 	m_pAISContext->UpdateCurrentViewer();
 
-	m_bgColor1 = Quantity_NOC_GREENYELLOW;
-	m_bgColor2 = Quantity_NOC_ORANGE;
+	
 
-	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
+
+
+
 
 }
