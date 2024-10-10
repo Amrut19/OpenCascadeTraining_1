@@ -5,6 +5,7 @@
 #include<BRepPrimAPI_MakeBox.hxx>
 #include <AIS_Shape.hxx>
 #include <BRepPrimAPI_MakeSphere.hxx>
+#include<BRepPrimAPI_MakeCylinder.hxx>
 MainViewer::MainViewer()
 {
 	
@@ -58,15 +59,18 @@ void MainViewer::setWindow(HWND hwnd)
 	aParams.IsAntialiasingEnabled = Standard_True;
 	aParams.NbMsaaSamples=8;
 
-	m_bgColor1 = Quantity_NOC_RED;
+	/*m_bgColor1 = Quantity_NOC_RED;
 	m_bgColor2 = Quantity_NOC_GRAY;
 
-	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
+	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);*/
 
 }
 
 void MainViewer::displayBoxShape()
 {
+
+	m_pAISContext->RemoveAll(Standard_True);
+
 	TopoDS_Shape shape =  BRepPrimAPI_MakeBox(300, 300, 300);
 
 	//check if shape is valid 
@@ -89,11 +93,15 @@ void MainViewer::displayBoxShape()
 
 	std::cout << "Displaying shape..." << std::endl;
 
+	m_bgColor1 = Quantity_NOC_PURPLE;
+	m_bgColor2 = Quantity_NOC_PINK;
 
+	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
 }
 
 void MainViewer::displayPoint()
 {
+	m_pAISContext->RemoveAll(Standard_True);
 	gp_Pnt m_center(5, 5, 5);
 	Standard_Real radius(100);
 	TopoDS_Shape m_mkSphere = BRepPrimAPI_MakeSphere(m_center, radius);
@@ -115,6 +123,38 @@ void MainViewer::displayPoint()
 	m_pAISContext->UpdateCurrentViewer();
 	std::cout << "Displaying shape..." << std::endl;
 
+	m_bgColor1 = Quantity_NOC_BLACK;
+	m_bgColor2 = Quantity_NOC_SKYBLUE;
 
+	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
+
+}
+
+void MainViewer::displayLine()
+{
+
+	m_pAISContext->RemoveAll(Standard_True);
+	gp_Pnt p1(100,100,100);
+
+	gp_Pnt p2(10, 10, 10);
+	
+	gp_Vec v1(p1, p2);
+	
+	BRepPrimAPI_MakeCylinder mk_cyclinder= BRepPrimAPI_MakeCylinder(100, v1.Magnitude());
+
+	Handle(AIS_Shape) t1 =  new	AIS_Shape(mk_cyclinder);
+
+	m_pAISContext->Display(t1, Standard_True); 
+
+	m_pAISContext->SetDisplayMode(AIS_Shaded, Standard_True);
+
+
+	m_pV3dView->MustBeResized();
+	m_pAISContext->UpdateCurrentViewer();
+
+	m_bgColor1 = Quantity_NOC_GREENYELLOW;
+	m_bgColor2 = Quantity_NOC_ORANGE;
+
+	m_pV3dView->SetBgGradientColors(m_bgColor1, m_bgColor2, Aspect_GFM_VER);
 
 }

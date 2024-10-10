@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(COpenCascadeTraining1View, CView)
 	
 	ON_COMMAND(ID_DEMO_BOX32773, &COpenCascadeTraining1View::OnDemoBox32773)
 	ON_COMMAND(ID_DEMO_POINT, &COpenCascadeTraining1View::OnDemoPoint)
+	ON_COMMAND(ID_DEMO_LINE, &COpenCascadeTraining1View::OnDemoLine)
 END_MESSAGE_MAP()
 
 // COpenCascadeTraining1View construction/destruction
@@ -164,4 +165,11 @@ void COpenCascadeTraining1View::OnDemoPoint()
 	m_pMainFrame->displayPoint();
 
 
+}
+
+
+void COpenCascadeTraining1View::OnDemoLine()
+{
+	// TODO: Add your command handler code here
+	m_pMainFrame->displayLine();
 }
